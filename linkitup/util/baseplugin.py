@@ -37,7 +37,6 @@ def plugin(fields=[], link='match'):
             Extracts article details and pass it to the plugin
             """
             article = request.get_json()
-            
             article_id = article['article_id']
             article_title = article['title']
             

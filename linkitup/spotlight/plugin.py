@@ -21,7 +21,6 @@ SIMILARITY_CUTOUT = 0.1
 
 
 @app.route('/spotlight', methods=['POST'])
-@login_required
 @plugin(fields=[('tags', 'id', 'name'), ('categories', 'id', 'name')],
         link='link')
 @provenance()

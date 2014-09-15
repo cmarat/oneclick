@@ -19,7 +19,6 @@ from linkitup.util.provenance import provenance
 endpoints = ['http://dbpedia-live.openlinksw.com/sparql', 'http://live.dbpedia.org/sparql', 'http://dbpedia.org/sparql']
 
 @app.route('/dbpedia', methods=['POST'])
-@login_required
 @plugin(fields=[('tags','id','name'),('links','id','link')], link='mapping')
 @provenance()
 def link_to_wikipedia(*args,**kwargs):

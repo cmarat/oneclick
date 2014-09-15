@@ -31,7 +31,6 @@ def index():
     return render_template('landing.html', user=g.user)
 
 @app.route('/dashboard')
-@login_required
 def dashboard():
     if not g.user.oauth_token:
         return render_template('public_articles.html', user = g.user, results = {},
@@ -39,7 +38,6 @@ def dashboard():
     return render_template('articles.html', user = g.user, results = {}, plugins = plugins.values())
 
 @app.route('/articles')
-@login_required
 def load_articles():
     """If this session has not yet been initialized (i.e. we don't yet have an oauth_token from Figshare), 
     it starts up the three-legged authentication procedure for OAuth v1.
@@ -78,13 +76,11 @@ def load_public_articles():
                                user=g.user)
         
 @app.route('/plugins')
-@login_required
 def load_plugins():
     return jsonify({'result': plugins.values()})
     
     
 @app.route('/details', methods=['POST'])
-@login_required
 def article_details():
     app.logger.debug(request)
     try :
@@ -103,7 +99,6 @@ def article_details():
     
 
 @app.route('/refresh', methods=['POST'])
-@login_required
 def refresh_article():
     data = request.get_json()
 
@@ -115,7 +110,6 @@ def refresh_article():
 
 
 @app.route('/nanopublication', methods = ['POST'])
-@login_required
 def nanopublication():
     
     data = request.get_json()
@@ -138,7 +132,6 @@ def nanopublication():
 
 
 @app.route('/publish', methods = ['POST'])
-@login_required
 def publish():
     data = request.get_json()
     
@@ -152,7 +145,6 @@ def publish():
         return jsonify({'success': False})
 
 @app.route('/provenance', methods=['POST'])
-@login_required
 def provenance():
     data = request.get_json()
 
@@ -176,7 +168,6 @@ def provenance():
         return jsonify({'success':False,'result': prov})
 
 @app.route('/clear')
-@login_required
 def clear_session_data():
     app.logger.debug("Logging out user")
     logout_user()
