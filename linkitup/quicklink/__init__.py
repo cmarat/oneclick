@@ -22,7 +22,7 @@ def run_all(article_id=841753):
     results = {}
     article_data = json.dumps(get_public_article(article_id))
     for plugin in ['orcid', 'dbpedia', 'spotlight']:
-        r = requests.post('http://127.0.0.1:5000/{}'.format(plugin),
+        r = requests.post('{}{}'.format(request.url_root, plugin),
                         data=article_data,
                         headers={"content-type":"application/json"},
                         timeout=(2, 30))
