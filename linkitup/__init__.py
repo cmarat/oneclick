@@ -15,6 +15,9 @@ TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'temp
 # Intialize the Flask Appliation
 app = Flask(__name__, template_folder = TEMPLATE_FOLDER)
 
+from .quicklink import quicklink
+app.register_blueprint(quicklink, url_prefix='/quicklink')
+
 # Setup SQLAlchemy
 db.init_app(app)
 app.logger.debug("Intialized database")
@@ -94,3 +97,4 @@ app.logger.debug("Now importing views")
 from linkitup import views
 
 app.logger.debug("Finalized initialization")
+

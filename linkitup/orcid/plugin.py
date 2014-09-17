@@ -28,7 +28,6 @@ orcid_url = 'http://pub.orcid.org/'
 credit_search_url = orcid_url + 'search/orcid-bio/?q=text:'
 
 @app.route('/orcid', methods=['POST'])
-@login_required
 @plugin(fields=[('authors','id','full_name')], link='mapping')
 @provenance()
 def link_to_orcid(*args,**kwargs):
