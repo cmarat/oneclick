@@ -5,6 +5,7 @@ flask-sqlalchemy
 flask-migrate
 flask-script
 flask-wtf
+flask-cors
 sqlalchemy
 rdflib>=4.1
 SPARQLWrapper
