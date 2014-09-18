@@ -26,11 +26,11 @@ def run_all(article_id=841753):
     for plugin in ['orcid', 'dbpedia', 'spotlight']:
         plugin_url = request.url_root + plugin
         current_app.logger.debug("About to POST to {}".format(plugin_url))
-        r = requests.post(plugin_url,
-                        data=article_data,
-                        headers={"content-type":"application/json"},
-                        timeout=(2, 30))
         try:
+            r = requests.post(plugin_url,
+                            data=article_data,
+                            headers={"content-type":"application/json"},
+                            timeout=(2, 30))
             results[plugin] = r.json()['result']
         except:
             pass
