@@ -24,6 +24,7 @@ def all_results(article_id='841753'):
         plugin_url = 'http://marat.ops.few.vu.nl/' + plugin
         # plugin_url = request.url_root + plugin
         current_app.logger.debug("About to POST to {}".format(plugin_url))
+        # assert current_app.debug == False
         try:
             r = requests.post(plugin_url,
                             data=article_data,
@@ -32,6 +33,7 @@ def all_results(article_id='841753'):
             results[plugin] = r.json()['result']
         except:
             pass
+    current_app.logger.debug("All results: {}".format(results))
     return results
 
 def orcid_results(article_data):
