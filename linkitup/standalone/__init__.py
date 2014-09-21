@@ -19,7 +19,7 @@ def run_all():
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
-def all_results(article_id='841753'):
+def all_results(article_id):
     article_id = request.args.get('article_id', '841753')
     current_app.logger.debug("Running available plugins on article {}".format(article_id))
     article_data = json.dumps(get_public_article(article_id))
@@ -29,12 +29,11 @@ def all_results(article_id='841753'):
         plugin_url = plugin_base + plugin
         # plugin_url = request.url_root + plugin
         current_app.logger.debug("About to POST to {}".format(plugin_url))
-        # assert current_app.debug == False
         try:
             r = requests.post(plugin_url,
                             data=article_data,
                             headers={"content-type":"application/json"},
-                            timeout=(1, 10))
+                            timeout=(1, 15))
             results[plugin] = r.json()['result']
         except:
             pass
