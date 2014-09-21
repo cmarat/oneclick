@@ -22,24 +22,24 @@ def run_all():
 def all_results(article_id='841753'):
     article_id = request.args.get('article_id', '841753')
     current_app.logger.debug("Running available plugins on article {}".format(article_id))
-    results = {}
     article_data = json.dumps(get_public_article(article_id))
-    # for plugin in ['orcid']:
-    #     plugin_url = 'http://marat.ops.few.vu.nl/' + plugin
-    #     # plugin_url = request.url_root + plugin
-    #     current_app.logger.debug("About to POST to {}".format(plugin_url))
-    #     # assert current_app.debug == False
-    #     try:
-    #         r = requests.post(plugin_url,
-    #                         data=article_data,
-    #                         headers={"content-type":"application/json"},
-    #                         timeout=(1, 10))
-    #         results[plugin] = r.json()['result']
-    #     except:
-    #         pass
-    # current_app.logger.debug("Sorted results: {}".format(orcid_results(article_data)))
-    # assert current_app.debug == False
+    results = {}
     results['orcid'] = orcid_results(article_data)
+    for plugin in ['dbpedia', 'spotlight']:
+        plugin_url = plugin_base + plugin
+        # plugin_url = request.url_root + plugin
+        current_app.logger.debug("About to POST to {}".format(plugin_url))
+        # assert current_app.debug == False
+        try:
+            r = requests.post(plugin_url,
+                            data=article_data,
+                            headers={"content-type":"application/json"},
+                            timeout=(1, 10))
+            results[plugin] = r.json()['result']
+        except:
+            pass
+    current_app.logger.debug("Sorted results: {}".format(orcid_results(article_data)))
+    # assert current_app.debug == False
     return results
 
 def orcid_results(article_data):

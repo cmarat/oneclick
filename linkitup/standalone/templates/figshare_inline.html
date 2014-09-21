@@ -1,12 +1,29 @@
 <div id="quicklink">
+	<h2>Authors</h2>
 	<ul id="ql_authors">
 		{% for original_label in results['orcid'] %}
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<a href="{{r.web}}">{{r.show}} ({{r.short}})</a>
+			<a href="{{r.web}}">- {{r.show}} ({{r.short}})</a>
 		</li>
 		{% endfor %}
+		{% endfor %}
+	</ul>
+	<h2>Tags</h2>
+	<ul id="ql_tags">
+		{% for k, r in results['dbpedia'].items() %}
+		<li>
+			<a href="{{r.web}}">{{r.show}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	<h2>Extra Links</h2>
+	<ul id="ql_tags">
+		{% for k, r in results['spotlight'].items() %}
+		<li>
+			<a href="{{r.web}}">{{r.show}} ({{r.web}})</a>
+		</li>
 		{% endfor %}
 	</ul>
 </div>
