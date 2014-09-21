@@ -1,9 +1,12 @@
 <div id="quicklink">
 	<ul id="ql_authors">
-		{% for r in results["orcid"].values() %}
+		{% for original_label in results['orcid'] %}
+		<li>{{ original_label }}</li>
+		{% for r in results['orcid'][original_label] %}
 		<li>
 			<a href="{{r.web}}">{{r.show}} ({{r.short}})</a>
 		</li>
+		{% endfor %}
 		{% endfor %}
 	</ul>
 </div>
