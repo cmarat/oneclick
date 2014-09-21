@@ -87,7 +87,7 @@ def link_to_orcid(*args,**kwargs):
                                         'show': name,
                                         'short': short,
                                         'original': a_id,
-                                        'oridinal_label': full_name,
+                                        'original_label': full_name,
                                         'extra': orcid_path,
                                         'subscript': score}
                 except Exception as e :
