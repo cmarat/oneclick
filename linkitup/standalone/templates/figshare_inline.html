@@ -1,0 +1,16 @@
+<div id="quicklink">
+	<ul id="ql_authors">
+		{% for r in results["orcid"].values() %}
+		<li>
+			{{r.show}} <a href="{{r.web}}">{{r.short}}</a>
+		</li>
+		{% endfor %}
+		<li>a1</li>
+		<ul>
+			<li>b1</li>
+			<li>b3</li>
+		</ul>
+		<li>a2</li>
+		<li>a3</li>
+	</ul>
+</div>

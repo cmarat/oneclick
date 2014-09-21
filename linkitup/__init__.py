@@ -18,6 +18,9 @@ app = Flask(__name__, template_folder = TEMPLATE_FOLDER)
 from .quicklink import quicklink
 app.register_blueprint(quicklink, url_prefix='/quicklink')
 
+from .standalone import standalone
+app.register_blueprint(standalone, url_prefix='/standalone')
+
 # Setup SQLAlchemy
 db.init_app(app)
 app.logger.debug("Intialized database")
