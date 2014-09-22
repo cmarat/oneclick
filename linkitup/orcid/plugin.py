@@ -89,7 +89,8 @@ def link_to_orcid(*args,**kwargs):
                                         'original': a_id,
                                         'original_label': full_name,
                                         'extra': orcid_path,
-                                        'subscript': score}
+                                        'subscript': score,
+                                        'score': score_double}
                 except Exception as e :
                     app.logger.debug("Exception in accessing ORCID entry: {}\n{}".format(e.message, pprint(sr)))
                     app.logger.debug(traceback.format_exc())
