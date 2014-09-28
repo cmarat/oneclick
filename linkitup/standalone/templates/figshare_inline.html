@@ -10,28 +10,6 @@ box-shadow: inset 0px 0px 15px 0px rgba(50, 50, 50, 0.25);
 }
 
 
-#ql_tags li {
-display: block;
-float: left;
-background-image: url('http://figshare.com/static/img/articles/tag.png');
-background-repeat: no-repeat;
-background-position: 0 -1px;
-height: 20px;
-overflow: hidden;
-margin-right: 10px;
-white-space: nowrap;
-}
-
-
-#ql_tags li a {
-background-color: rgb(186,77,88);
-color: white;
-text-decoration: none;
-display: block;
-padding: 2px 6px 2px 10px;
-line-height: 13px;
-white-space: nowrap;
-}
 
 .mini-orcid-icon {
 background: url("https://82aefee5e1a8bc95cf46-47a9dc01c7d62016064e063a7d865c4c.ssl.cf1.rackcdn.com/img/mini-icon.png") transparent no-repeat;	
@@ -39,9 +17,25 @@ background-size: 20px 20px;
 width: 20px;
 height: 20px;
 display: block;
-float: left!important;
+float: left;
 	
-	
+}
+
+
+#ql_authors li {
+	margin: 5px 0px;
+}
+
+#ql_authors li a{
+	line-height: 23px;
+	margin-left: 26px;
+}
+
+
+a:hover {
+	color: #444;
+	text-decoration:none;
+}
 
 </style>
 
@@ -54,7 +48,7 @@ float: left!important;
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}}</a>&nbsp;({{r.short}})
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}">- {{r.show}}</a>&nbsp;({{r.short}})
 		</li>
 		{% endfor %}
 		{% endfor %}
