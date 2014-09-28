@@ -10,7 +10,7 @@ box-shadow: inset 0px 0px 15px 0px rgba(50, 50, 50, 0.25);
 }
 
 
-#ql_tags ul li {
+#ql_tags li {
 display: block;
 float: left;
 background-image: url('http://figshare.com/static/img/articles/tag.png');
@@ -23,7 +23,7 @@ white-space: nowrap;
 }
 
 
-#ql_tags ul li a {
+#ql_tags li a {
 background-color: rgb(186,77,88);
 color: white;
 text-decoration: none;
@@ -39,7 +39,7 @@ background-size: 20px 20px;
 width: 20px;
 height: 20px;
 display: block;
-float: left;
+float: left!important;
 	
 	
 
@@ -54,7 +54,7 @@ float: left;
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<span class="mini-orcid-icon"></span><a href="{{r.web}}">- {{r.show}}</a>&nbsp;({{r.short}})
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}}</a>&nbsp;({{r.short}})
 		</li>
 		{% endfor %}
 		{% endfor %}
