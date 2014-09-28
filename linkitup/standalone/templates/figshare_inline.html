@@ -17,7 +17,7 @@ background-size: 20px 20px;
 width: 20px;
 height: 20px;
 display: block;
-float: left;
+float: left!important;
 	
 }
 
@@ -48,7 +48,7 @@ a:hover {
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<span class="mini-orcid-icon"></span><a href="{{r.web}}">- {{r.show}}</a>&nbsp;({{r.short}})
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}}</a>&nbsp;({{r.short}})
 		</li>
 		{% endfor %}
 		{% endfor %}
