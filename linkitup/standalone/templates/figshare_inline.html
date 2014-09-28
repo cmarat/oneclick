@@ -48,7 +48,7 @@ a:hover {
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}}</a>&nbsp;({{r.short}})
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}} ({{r.short}})</a>
 		</li>
 		{% endfor %}
 		{% endfor %}
