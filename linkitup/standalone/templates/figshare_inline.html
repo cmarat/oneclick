@@ -10,10 +10,10 @@ box-shadow: inset 0px 0px 15px 0px rgba(50, 50, 50, 0.25);
 }
 
 
-#ql_tags ul {
+#ql_tags ul li {
 display: block;
 float: left;
-background-image: url('/static/img/articles/tag.png');
+background-image: url('http://figshare.com/static/img/articles/tag.png');
 background-repeat: no-repeat;
 background-position: 0 -1px;
 height: 20px;
@@ -23,7 +23,7 @@ white-space: nowrap;
 }
 
 
-#ql_tags ul li {
+#ql_tags ul li a {
 background-color: rgb(186,77,88);
 color: white;
 text-decoration: none;
@@ -33,9 +33,15 @@ line-height: 13px;
 white-space: nowrap;
 }
 
-#ql_authors ul {
-list-style: square url("https://82aefee5e1a8bc95cf46-47a9dc01c7d62016064e063a7d865c4c.ssl.cf1.rackcdn.com/img/mini-icon.png");
-}
+.mini-orcid-icon {
+background: url("https://82aefee5e1a8bc95cf46-47a9dc01c7d62016064e063a7d865c4c.ssl.cf1.rackcdn.com/img/mini-icon.png") transparent no-repeat;	
+background-size: 20px 20px;
+width: 20px;
+height: 20px;
+display: block;
+float: left;
+	
+	
 
 </style>
 
@@ -48,7 +54,7 @@ list-style: square url("https://82aefee5e1a8bc95cf46-47a9dc01c7d62016064e063a7d8
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<a href="{{r.web}}">- {{r.show}} ({{r.short}})</a>
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}">- {{r.show}}</a>&nbsp;({{r.short}})
 		</li>
 		{% endfor %}
 		{% endfor %}
@@ -71,7 +77,7 @@ list-style: square url("https://82aefee5e1a8bc95cf46-47a9dc01c7d62016064e063a7d8
 	<ul id="ql_spotlight">
 		{% for k, r in results['spotlight'].items() %}
 		<li>
-			<a href="{{r.web}}">{{r.show}} ({{r.web}})</a>
+			<a href="{{r.web}}">{{r.show}}</a>
 		</li>
 		{% endfor %}
 	</ul>
