@@ -55,7 +55,7 @@ a:hover {
 	</ul>
 	{% endif %}
 
-	{% if 'dbpedia' in results and results['dbpedia'] %}
+<!-- 	{% if 'dbpedia' in results and results['dbpedia'] %}
 	<h2>Tags</h2>
 	<ul id="ql_tags">
 		{% for k, r in results['dbpedia'].items() %}
@@ -72,6 +72,17 @@ a:hover {
 		{% for k, r in results['spotlight'].items() %}
 		<li>
 			<a href="{{r.web}}">{{r.show}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+ -->
+	{% if 'tags' in results and results['tags'] %}
+	<h2>Concept links</h2>
+	<ul id="ql_tags">
+		{% for r in results['tags'] %}
+		<li>
+			<a href="{{r.web}}">{{r.description}}</a>
 		</li>
 		{% endfor %}
 	</ul>

@@ -15,11 +15,11 @@ TEMPLATE_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'temp
 # Intialize the Flask Appliation
 app = Flask(__name__, template_folder = TEMPLATE_FOLDER)
 
-from .quicklink import quicklink
-app.register_blueprint(quicklink, url_prefix='/quicklink')
+# from .quicklink import quicklink
+# app.register_blueprint(quicklink, url_prefix='/quicklink')
 
 from .standalone import standalone
-app.register_blueprint(standalone, url_prefix='/standalone')
+app.register_blueprint(standalone, url_prefix='/bookmarklet')
 
 # Setup SQLAlchemy
 db.init_app(app)

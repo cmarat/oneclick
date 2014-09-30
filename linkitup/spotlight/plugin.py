@@ -66,6 +66,7 @@ def link_to_spotlight(*args, **kwargs):
                  'show': concept_label,
                  'extra': types,
                  'subscript': score,
-                 'original': article_id}
+                 'original': article_id,
+                 'similarity': similarity_score}
         matches[dbpedia_uri] = match
     return matches
