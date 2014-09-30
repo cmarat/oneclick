@@ -41,8 +41,8 @@ a:hover {
 
 
 <div id="quicklink">
+	{% if 'orcid' in results and results['orcid']%}
 	<h2>Authors</h2>
-	{% if 'orcid' in results %}
 	<ul id="ql_authors">
 		{% for original_label in results['orcid'] %}
 		<li>{{ original_label }}</li>
@@ -55,18 +55,18 @@ a:hover {
 	</ul>
 	{% endif %}
 
-	{% if 'dbpedia' in results %}
+	{% if 'dbpedia' in results and results['dbpedia'] %}
 	<h2>Tags</h2>
 	<ul id="ql_tags">
 		{% for k, r in results['dbpedia'].items() %}
 		<li>
-			<a href="{{r.web}}">{{r.show}}</a>
+			<a href="{{r.web}}">{{r.description}}</a>
 		</li>
 		{% endfor %}
 	</ul>
 	{% endif %}
 
-	{% if 'spotlight' in results %}
+	{% if 'spotlight' in results and results['spotlight'] %}
 	<h2>Extra Links</h2>
 	<ul id="ql_spotlight">
 		{% for k, r in results['spotlight'].items() %}
