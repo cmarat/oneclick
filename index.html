@@ -5,14 +5,14 @@
 </head>
 <body>
 1) Drag this *
-<a href='javascript:(function(){replace_content=function(data){var orginalContent=$("#body_left").children();orginalContent.hide();$("#body_left").append(data);};var article_id=location.href.split("/").pop();var url="http://marat.ops.few.vu.nl/standalone/?article_id="+article_id;$.get(url,replace_content).fail(function(){console.log("Failed to get links from Linkitup.")});})();'>Bookmarklet</a>
+<a href="javascript:(function()%7Breplace_content=function(data)%7Bvar%20orginalContent=$('%23body_left').children();orginalContent.hide();$('%23body_left').append(data);%7D;var%20article_id=location.href.split(%22/%22).pop();var%20url=%22http://marat.ops.few.vu.nl/bookmarklet/?article_id=%22+article_id;console.log(%22Fetching%20links%20from%20Linkitup.%22);$.get(url,replace_content).fail(function()%7Bconsole.log(%22Failed%20to%20get%20links%20from%20Linkitup.%22)%7D);%7D)();">Bookmarklet</a>
 to your bookmark bar. <br>
 2) Use it on one of the Figshare <a href="http://figshare.com/articles/browse#thumb">articles</a>, for example, 
 <a href="http://figshare.com/articles/Do_Oaks_i_Quercus_i_spp_dead_wood_and_fruiting_Common_Ivy_i_Hedera_helix_i_affect_habitat_selection_of_the_Middle_Spotted_Woodpecker_i_Dendrocopos_medius_i_/1170136">this</a> 
 <br><br>
-<a href='javascript:(function(){location.href="http://marat.ops.few.vu.nl/quicklink/"+location.href.split("/").pop()})();'>Debugging Bookmarklet</a>
+<a href='javascript:(function(){location.href="http://marat.ops.few.vu.nl/bookmarklet/"+location.href.split("/").pop()})();'>Debugging Bookmarklet</a>
 
 Test output:
-<a href='http://marat.ops.few.vu.nl/standalone/?article_id=1175849'>http://marat.ops.few.vu.nl/standalone/?article_id=1175849</a>
+<a href='http://marat.ops.few.vu.nl/bookmarklet/?article_id=1175849'>http://marat.ops.few.vu.nl/standalone/?article_id=1175849</a>
 </body>
 </html>
