@@ -10,15 +10,20 @@ standalone = Blueprint(
     'standalone',
     __name__,
     template_folder='templates')
-plugin_base = 'http://marat.ops.few.vu.nl/'
+# plugin_base = 'http://marat.ops.few.vu.nl/'
+plugin_base = 'http://localhost:5000/'
 
 
 @standalone.route('/')
 def bookmarklet_links():
     # assert app.debug == False
     article_id = request.args.get('article_id', '841753')
+    try:
+        timeout = int(request.args['timeout'])
+    except:
+        timeout = 1
     current_app.logger.debug("Quicklink article {}".format(article_id))
-    results = find_all_links(article_id)
+    results = find_all_links(article_id, timeout)
     response = make_response(
         render_template("figshare_inline.html", results=results))
     response.headers['Access-Control-Allow-Origin'] = '*'
@@ -37,12 +42,12 @@ def unify_tags(dbpedia_results, spotlight_results):
     return dbpedia + spotlight
 
 
-def find_all_links(article_id):
+def find_all_links(article_id, timeout):
     article_data = json.dumps(get_public_article(article_id))
     results = {}
-    results['orcid'] = process_orcid(post_to_plugin('orcid', article_data, timeout=(2, 10)))
-    results['dbpedia'] = post_to_plugin('dbpedia', article_data, timeout=(2, 10))
-    results['spotlight'] = post_to_plugin('spotlight', article_data, timeout=(2, 16))
+    results['orcid'] = process_orcid(post_to_plugin('orcid', article_data, timeout=timeout))
+    results['dbpedia'] = post_to_plugin('dbpedia', article_data, timeout=timeout)
+    results['spotlight'] = post_to_plugin('spotlight', article_data, timeout=timeout)
 
     results['tags'] = unify_tags(results['dbpedia'], results['spotlight'])
     # for plugin, result in results.items():
