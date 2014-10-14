@@ -10,7 +10,8 @@ standalone = Blueprint(
     'standalone',
     __name__,
     template_folder='templates')
-plugin_base = 'http://marat.ops.few.vu.nl/'
+#plugin_base = 'http://marat.ops.few.vu.nl/'
+plugin_base = 'http://localhost:5000/'
 
 
 @standalone.route('/')

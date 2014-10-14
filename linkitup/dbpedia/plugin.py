@@ -16,7 +16,7 @@ from linkitup import app
 from linkitup.util.baseplugin import plugin, SPARQLPlugin
 from linkitup.util.provenance import provenance
 
-endpoints = ['http://dbpedia-live.openlinksw.com/sparql', 'http://live.dbpedia.org/sparql', 'http://dbpedia.org/sparql']
+endpoints = ['http://marat.d2s.labs.vu.nl/sparql', 'http://dbpedia-live.openlinksw.com/sparql', 'http://live.dbpedia.org/sparql', 'http://dbpedia.org/sparql']
 
 @app.route('/dbpedia', methods=['POST'])
 @plugin(fields=[('tags','id','name'),('links','id','link')], link='mapping')

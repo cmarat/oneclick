@@ -48,7 +48,7 @@ a:hover {
 		<li>{{ original_label }}</li>
 		{% for r in results['orcid'][original_label] %}
 		<li>
-			<span class="mini-orcid-icon"></span><a href="{{r.web}}"> {{r.show}} ({{r.short}})</a>
+			<span class="mini-orcid-icon"></span><a href="{{r.web}}" target="_blank"> {{r.show}} ({{r.short}})</a>
 		</li>
 		{% endfor %}
 		{% endfor %}
@@ -82,7 +82,7 @@ a:hover {
 	<ul id="ql_tags">
 		{% for r in results['tags'] %}
 		<li>
-			<a href="{{r.web}}">{{r.description}}</a>
+			<a href="{{r.web}}" target="_blank">{{r.description}}</a>
 		</li>
 		{% endfor %}
 	</ul>
